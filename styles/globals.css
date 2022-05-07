@@ -1,3 +1,61 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+	.flex-col {
+		display: flex;
+		flex-direction: column;
+	  }
+	  .flex-center {
+		@apply flex;
+		@apply justify-center;
+		@apply items-center;
+	  }
+	  .absolute-full {
+		@apply absolute;
+		@apply top-0;
+		@apply left-0;
+		@apply right-0;
+		@apply bottom-0;
+	  }
+	
+	  .text-shadow-accent {
+		text-shadow: 1px 1px theme('colors.main');
+	  }
+	  .text-shadow-tpWhite {
+		text-shadow: 1px 1px theme('colors.tpWhite');
+	  }
+	  .text-shadow-tpBlack {
+		text-shadow: 1px 1px theme('colors.tpBlack');
+	  }
+	  .text-shadow-6 {
+		text-shadow: 
+		  1px 1px 1px #18082e, 2px 2px 1px #18082e, 3px 3px 1px #18082e, 
+		  4px 4px 1px #18082e, 5px 5px 1px #18082e, 6px 6px 1px #18082e;
+	  }
+	  .text-shadow-duo {
+		text-shadow: -1px -1px theme('colors.tpBlack'), 1px 1px theme('colors.tpWhite');
+	  }
+	
+	  /* .glass {
+		backdrop-filter: blur(18px);
+		-webkit-backdrop-filter: blur(18px);
+		@apply bg-accentWhite bg-opacity-40;
+	  }
+	
+	  .glass-dark {
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		@apply bg-accentBlack bg-opacity-80;
+	  } */
+	
+	  .shadow-asBorder {
+		box-shadow: 0 0 0 1px theme('colors.tpBlack');
+	  }
+	
+	  .border-sexy {
+		box-shadow: 0 0 0 1px theme('colors.tpBlack');
+		@apply border border-tpWhite;
+	  }
+}
