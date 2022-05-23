@@ -24,7 +24,7 @@ export default function Threads() {
 			})
 		})
 
-		setThreads(threadItems.sort((a, b) => a.updatedAt - b.updatedAt))
+		setThreads(threadItems.sort((a, b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt)))
 	}
 	useEffect(processThreads, [reviews])
 	
@@ -32,14 +32,14 @@ export default function Threads() {
 		<div className={cn.root}>
 			<SectionHeader>Threads</SectionHeader>
 			<div className='grow-0 shrink-0 basis-3' />
-			{threads.map(t => <ThreadItem {...t} key={t.id} />)}
+			{threads.map(t => <ThreadItem {...t} key={t.url} />)}
 		</div>
 	)
 }
 
 function ThreadItem(p) {
 	return (
-	  <a className='flex-col items-center text-white w-full bg-main-lt rounded-xl mb-3' href={p.url} target='_blank' key={p.url}>
+	  <div className={cn.threadRoot}>
 		<h3 className={cn.threadTitle}>
 			{p.mr.title}
 		</h3>
@@ -47,18 +47,22 @@ function ThreadItem(p) {
 		{p.inReplyTo &&
 			<MessageBubble 
 				{...p.inReplyTo} 
-				left={p.inReplyTo.author === p.mr.author}
+				left={p.inReplyTo.author.name === p.mr.author.name}
 				noLink
 			/>
 		}
 
 		<MessageBubble {...p} left={p.author.name === p.mr.author.name} noLink />
-	  </a>
+
+		<a href={p.url} target='_blank' className='absolute-full' />
+	  </div>
 	)
   }
 
   var cn = {
 	  root: 'flex flex-col items-center justify-start grow min-w-[216px] max-w-[648px] h-full overflow-scroll pr-[12px]',
+
+	  threadRoot: 'flex-col items-center text-white w-full bg-main-lt rounded-xl mb-3 relative',
 
 	  threadTitle: 'font-medium w-full py-1 px-2 truncate text-[12px] text-center text-black border-b border-red-300 mb-2'
   }

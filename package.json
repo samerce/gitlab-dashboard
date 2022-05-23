@@ -11,9 +11,11 @@
     "graphql": "^16.4.0",
     "next": "latest",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "supercons": "^0.0.1"
   },
   "devDependencies": {
+    "@types/react": "^18.0.9",
     "autoprefixer": "^10.4.0",
     "postcss": "^8.4.5",
     "prettier": "^2.5.1",

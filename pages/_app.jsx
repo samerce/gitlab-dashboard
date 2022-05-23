@@ -2,6 +2,7 @@ import { ApolloProvider } from '@apollo/client'
 import apolloClient from '../gql/apolloClient'
 import ContainerProviders from '../containers'
 import '../styles/globals.css'
+import useAuth from '../hooks/useAuth'
 
 function SafeHydrate({ children }) {
   return (
@@ -12,6 +13,8 @@ function SafeHydrate({ children }) {
 }
 
 export default function GLDashboard({ Component, pageProps }) {
+  useAuth()
+
   return (
     <SafeHydrate>
       <ApolloProvider client={apolloClient}>

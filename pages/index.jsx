@@ -1,21 +1,9 @@
 import Head from 'next/head'
-import { useEffect } from 'react'
 import Header from '../components/Header'
 import Threads from '../components/Threads'
 import Requests from '../components/Requests'
 
-const kGitLabTokenKey = 'glDashboard.glToken'
-
 export default function Home() {
-  useEffect(() => {
-    if (localStorage.getItem(kGitLabTokenKey)) return
-
-    const params = new URLSearchParams(window.location.search)
-    const accessToken = params.get('accessToken')
-    if (accessToken) localStorage.setItem(kGitLabTokenKey, accessToken)
-    else window.location = '/api/oauth/start'
-  })
-
   return (
     <div className='flex flex-col items-center justify-center w-full h-full relative bg-main-dk'>
       <Head>

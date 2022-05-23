@@ -1,33 +1,40 @@
 import { createContainer } from '../util/container'
-import { useEffect, useState } from 'react'
-import { gql, useQuery } from '@apollo/client'
+import { useEffect, useLayoutEffect, useState } from 'react'
+import { gql, NetworkStatus, useQuery } from '@apollo/client'
 import useFilters from './useFilters'
+import { useInterval } from '../util/useInterval'
 
 const container = createContainer(() => {
 	const [reviews, setReviews] = useState([])
 	const {filters} = useFilters()
-	const {data, loading, error, refetch} = useQuery(ReviewsQuery, {
+	const {data, error, networkStatus, refetch} = useQuery(ReviewsQuery, {
 		variables: {
 			assignedToMe: filters.assignedToMe,
 			reviewsForMe: filters.reviewsForMe,
 			state: filters.open ? 'opened' : filters.closed ? 'closed' : filters.merged ? 'merged' : null,
 		},
-		pollInterval: 10000
+		fetchPolicy: 'cache-and-network',
+		pollInterval: 5000,
+		notifyOnNetworkStatusChange: true,
 	})
 
+	const fetch = () => { refetch() }
+
 	const processReviews = () => {
-		console.log(data)
 		const assignedToMe = data?.currentUser?.assignedMergeRequests?.nodes || []
 		const reviewsForMe = data?.currentUser?.reviewRequestedMergeRequests?.nodes || []
 		const allReviews = [...assignedToMe, ...reviewsForMe]
-		console.log(allReviews)
 		setReviews(allReviews.sort((a, b) => a.updatedAt - b.updatedAt))
 	}
 
 	useEffect(processReviews, [data])
-	useEffect(refetch, [filters])
+	useEffect(fetch, [filters])
+	useInterval(30000, fetch)
 
-	return {reviews, loading, error}
+	return {
+		reviews, error, fetch,
+		loading: networkStatus !== NetworkStatus.ready,
+	}
 })
 
 var ReviewsQuery = gql`
@@ -47,6 +54,7 @@ var ReviewsQuery = gql`
 
 	fragment reviewFields on MergeRequestConnection {
 		nodes {
+			id
 			title
 			webUrl
 			updatedAt
