@@ -1,7 +1,7 @@
 import Avatar from "./Avatar"
 
 export default function MessageBubble(p) {
-	const bodyCN = 'text-[12px] rounded-xl p-2 border-sexy ' + 
+	const bodyCN = 'text-[12px] rounded-xl p-2 border-sexy break-word ' + 
 		(p.left? 'bg-main mr-auto' : 'bg-main-dk ml-auto text-right')
 	const avatarCN = 'w-[36px] h-[36px] ' + 
 		(p.left? 'order-first mr-1' : 'order-last ml-1')
