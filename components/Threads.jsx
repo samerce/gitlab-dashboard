@@ -44,15 +44,17 @@ function ThreadItem(p) {
 			{p.mr.title}
 		</h3>
 
-		{p.inReplyTo &&
-			<MessageBubble 
-				{...p.inReplyTo} 
-				left={p.inReplyTo.author.name === p.mr.author.name}
-				noLink
-			/>
-		}
+		<div className='flex-col items-center text-white w-full relative overflow-hidden'>
+				{p.inReplyTo &&
+					<MessageBubble 
+						{...p.inReplyTo} 
+						left={p.inReplyTo.author.name === p.mr.author.name}
+						noLink
+					/>
+				}
 
-		<MessageBubble {...p} left={p.author.name === p.mr.author.name} noLink />
+				<MessageBubble {...p} left={p.author.name === p.mr.author.name} noLink />
+			</div>
 
 		<a href={p.url} target='_blank' className='absolute-full' />
 	  </div>
@@ -62,8 +64,8 @@ function ThreadItem(p) {
   var cn = {
 	  root: 'flex flex-col items-center justify-start grow min-w-[216px] max-w-[768px] h-full overflow-scroll pr-2',
 
-	  threadRoot: 'flex-col items-center text-white w-full bg-main-dk rounded-xl mb-3 relative border-sexy',
+	  threadRoot: 'flex-col items-center text-white w-full mb-4 relative overflow-hidden pb-4',
 
-	  threadTitle: 'font-light w-full p-2 truncate text-sm text-center text-white border-b border-tpWhite mb-2'
+	  threadTitle: 'w-full p-2 truncate text-xs text-center text-main-lt mb-3 uppercase border-sexy rounded-lg bg-main-dk'
   }
 	

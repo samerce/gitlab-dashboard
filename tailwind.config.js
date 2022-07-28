@@ -11,7 +11,7 @@ module.exports = {
         main: '#DB4041',
         'main-lt': '#ffcbcd',
         'main-md': '#551d1d',
-        'main-dk': '#2f1112',
+        'main-dk': '#260d10',
         black: '#0a0404',
         tpBlack: '#1a011421',
         tpWhite: '#fff0fc21',
