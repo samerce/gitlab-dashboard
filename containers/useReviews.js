@@ -40,14 +40,14 @@ const container = createContainer(() => {
 		const fresh = []
 
 		sortedReviews.forEach(r => {
-			if (r.approved) approved.push(r);
+			if (r.approved) approved.unshift(r);
 			else {
 				const fourDaysAgo = moment().subtract(4, 'days')
 
 				if (moment(r.createdAt).isBefore(fourDaysAgo)) {
-					stale.push(r)
+					stale.unshift(r)
 				} else {
-					fresh.push(r)
+					fresh.unshift(r)
 				}
 			}
 		})

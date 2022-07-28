@@ -34,20 +34,19 @@ function ReviewGroup({ title, reviews }) {
 }
 
 function ReviewItem(p) {
-	const scrollRootRef = useRef()
+	// const scrollRootRef = useRef()
 
 	const notes = useMemo(() => (
 		p.discussions?.nodes?.map(d => d.notes?.nodes)
 			.flat()
 			.sort((a, b) => Date.parse(a.updatedAt) - Date.parse(b.updatedAt))
 	), [p.discussions])
-	console.log(notes)
 
-	useEffect(() => {
-		if (notes?.length && scrollRootRef?.current) {
-			scrollRootRef.current.scrollTop = scrollRootRef.current.scrollHeight
-		}
-	}, [notes, scrollRootRef])
+	// useEffect(() => {
+	// 	if (notes?.length && scrollRootRef?.current) {
+	// 		scrollRootRef.current.scrollTop = scrollRootRef.current.scrollHeight
+	// 	}
+	// }, [notes, scrollRootRef])
 
 	return (
 		<div className={cn.reviewItem}>
