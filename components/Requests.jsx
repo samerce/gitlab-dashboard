@@ -99,7 +99,7 @@ function VSeparator() {
 var cn = {
 	root: 'flex flex-col items-center justify-start grow max-h-full min-w-[972px]',
 
-	scrollRoot: 'flex-col flex-wrap w-full items-start justify-start h-full overflow-scroll pt-3 pr-[9px]',
+	scrollRoot: 'flex-col flex-wrap w-full items-start justify-start h-full overflow-scroll pr-[9px]',
 	
 	reviewItem: 'flex flex-col items-center w-full overflow-hidden bg-main-dk mx-1.5 mb-3 rounded-xl border-sexy relative',
 

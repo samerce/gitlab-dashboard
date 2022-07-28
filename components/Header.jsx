@@ -62,6 +62,6 @@ function FilterRadioButtonGroup(p) {
 }
 
 var cn = {
-  header: 'flex w-full items-center justify-end space-between mt-1 mb-3 py-3 px-4 bg-main rounded-md border-sexy',
+  header: 'flex w-full items-center justify-end space-between my-2 py-3 px-4 bg-main rounded-md border-sexy',
   button: 'flex items-center justify-center px-3 py-1 mx-1 border border-main-lt rounded-xl max-w-[154px] text-[14px]',
 }
