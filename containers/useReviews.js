@@ -40,10 +40,7 @@ const container = createContainer(() => {
 		const fresh = []
 
 		sortedReviews.forEach(r => {
-			if (r.title.includes(5104)) {
-					stale.push(r)
-			}
-			else if (r.approved) approved.push(r);
+			if (r.approved) approved.push(r);
 			else {
 				const fourDaysAgo = moment().subtract(4, 'days')
 
