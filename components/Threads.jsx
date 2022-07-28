@@ -60,10 +60,10 @@ function ThreadItem(p) {
   }
 
   var cn = {
-	  root: 'flex flex-col items-center justify-start grow min-w-[216px] max-w-[648px] h-full overflow-scroll pr-[12px]',
+	  root: 'flex flex-col items-center justify-start grow min-w-[216px] max-w-[768px] h-full overflow-scroll pr-2',
 
-	  threadRoot: 'flex-col items-center text-white w-full bg-main-lt rounded-xl mb-3 relative',
+	  threadRoot: 'flex-col items-center text-white w-full bg-main-dk rounded-xl mb-3 relative border-sexy',
 
-	  threadTitle: 'font-medium w-full py-1 px-2 truncate text-[12px] text-center text-black border-b border-red-300 mb-2'
+	  threadTitle: 'font-light w-full p-2 truncate text-sm text-center text-white border-b border-tpWhite mb-2'
   }
 	

@@ -5,7 +5,7 @@ import { ReviewsProvider } from './useReviews'
 var providers = [
 	ReviewsProvider,
 	FiltersProvider,
-  ]
+]
   
 export default React.memo(({ children }) => {
 	let current = children

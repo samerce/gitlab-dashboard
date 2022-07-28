@@ -3,9 +3,15 @@ import { useEffect, useLayoutEffect, useState } from 'react'
 import { gql, NetworkStatus, useQuery } from '@apollo/client'
 import useFilters from './useFilters'
 import { useInterval } from '../util/useInterval'
+import { uniqBy } from 'lodash'
+import moment from 'moment'
 
 const container = createContainer(() => {
 	const [reviews, setReviews] = useState([])
+	const [approvedReviews, setApprovedReviews] = useState([])
+	const [staleReviews, setStaleReviews] = useState([])
+	const [freshReviews, setFreshReviews] = useState([])
+
 	const {filters} = useFilters()
 	const {data, error, networkStatus, refetch} = useQuery(ReviewsQuery, {
 		variables: {
@@ -24,7 +30,34 @@ const container = createContainer(() => {
 		const assignedToMe = data?.currentUser?.assignedMergeRequests?.nodes || []
 		const reviewsForMe = data?.currentUser?.reviewRequestedMergeRequests?.nodes || []
 		const allReviews = [...assignedToMe, ...reviewsForMe]
-		setReviews(allReviews.sort((a, b) => a.updatedAt - b.updatedAt))
+		const dedupedReviews = uniqBy(allReviews, (r) => r.id)
+		const sortedReviews = dedupedReviews.sort((a, b) => a.updatedAt - b.updatedAt)
+
+		setReviews(sortedReviews)
+
+		const approved = []
+		const stale = []
+		const fresh = []
+
+		sortedReviews.forEach(r => {
+			if (r.title.includes(5104)) {
+					stale.push(r)
+			}
+			else if (r.approved) approved.push(r);
+			else {
+				const fourDaysAgo = moment().subtract(4, 'days')
+
+				if (moment(r.createdAt).isBefore(fourDaysAgo)) {
+					stale.push(r)
+				} else {
+					fresh.push(r)
+				}
+			}
+		})
+
+		setApprovedReviews(approved)
+		setStaleReviews(stale)
+		setFreshReviews(fresh)
 	}
 
 	useEffect(processReviews, [data])
@@ -32,7 +65,7 @@ const container = createContainer(() => {
 	useInterval(30000, fetch)
 
 	return {
-		reviews, error, fetch,
+		reviews, error, fetch, approvedReviews, staleReviews, freshReviews,
 		loading: networkStatus !== NetworkStatus.ready,
 	}
 })
@@ -58,6 +91,8 @@ var ReviewsQuery = gql`
 			title
 			webUrl
 			updatedAt
+			createdAt
+			approved
 			author {
 				avatarUrl
 				name

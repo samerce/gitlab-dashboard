@@ -10,10 +10,12 @@ module.exports = {
       colors: {
         main: '#DB4041',
         'main-lt': '#ffcbcd',
+        'main-md': '#551d1d',
         'main-dk': '#2f1112',
-        black: '#180b0b',
+        black: '#0a0404',
         tpBlack: '#1a011421',
         tpWhite: '#fff0fc21',
+        green: '#1ac316'
       },
       lineClamp: {
         7: '7',
