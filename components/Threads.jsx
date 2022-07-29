@@ -62,7 +62,7 @@ function ThreadItem(p) {
   }
 
   var cn = {
-	  root: 'flex flex-col items-center justify-start grow min-w-[216px] max-w-[648px] h-full overflow-scroll pr-2',
+	  root: 'flex flex-col items-center justify-start grow min-w-[216px] max-w-[648px] h-full overflow-scroll px-2',
 
 	  threadRoot: 'flex-col items-center text-white w-full mb-4 relative overflow-hidden pb-4',
 

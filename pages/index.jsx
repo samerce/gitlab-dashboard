@@ -15,9 +15,9 @@ export default function Home() {
         <Header />
         
         <div className='flex w-full items-start justify-center h-full relative overflow-hidden'>
-          <Threads />
-          <div className='shrink-0 grow-0 basis-[1px] w-[1px] h-full bg-tpWhite mr-2'>&nbsp;</div>
           <Requests />
+          <div className='shrink-0 grow-0 basis-[1px] w-[1px] h-full bg-tpWhite ml-2'>&nbsp;</div>
+          <Threads />
         </div>
 
       </main>
