@@ -39,6 +39,7 @@ function ReviewItem(p) {
 	const notes = useMemo(() => (
 		p.discussions?.nodes?.map(d => d.notes?.nodes)
 			.flat()
+			.filter(n => !n.system && !n.author.name.includes('codecov'))
 			.sort((a, b) => Date.parse(a.updatedAt) - Date.parse(b.updatedAt))
 	), [p.discussions])
 
@@ -62,7 +63,7 @@ function ReviewItem(p) {
 
 				<div className='flex text-main-lt text-sm'>
 	        <Icon glyph='message-simple' size={20} className='mr-1' />
-					{notes.filter(n => !n.system && !n.author.name.includes('codecov')).length}
+					{notes.length}
 				</div>
 
 				<VSeparator />

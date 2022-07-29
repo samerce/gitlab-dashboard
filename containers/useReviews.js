@@ -31,7 +31,7 @@ const container = createContainer(() => {
 		const reviewsForMe = data?.currentUser?.reviewRequestedMergeRequests?.nodes || []
 		const allReviews = [...assignedToMe, ...reviewsForMe]
 		const dedupedReviews = uniqBy(allReviews, (r) => r.id)
-		const sortedReviews = dedupedReviews.sort((a, b) => a.updatedAt - b.updatedAt)
+		const sortedReviews = dedupedReviews.sort((a, b) => moment(a.updatedAt).diff(moment(b.updatedAt)))
 
 		setReviews(sortedReviews)
 
