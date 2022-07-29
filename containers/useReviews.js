@@ -38,17 +38,15 @@ const container = createContainer(() => {
 		const approved = []
 		const stale = []
 		const fresh = []
+		const fourDaysAgo = moment().subtract(4, 'days')
 
 		sortedReviews.forEach(r => {
-			if (r.approved) approved.unshift(r);
-			else {
-				const fourDaysAgo = moment().subtract(4, 'days')
-
-				if (moment(r.createdAt).isBefore(fourDaysAgo)) {
-					stale.unshift(r)
-				} else {
-					fresh.unshift(r)
-				}
+			if (r.approved) {
+				approved.unshift(r);
+			} else if (moment(r.createdAt).isBefore(fourDaysAgo)) {
+				stale.unshift(r)
+			} else {
+				fresh.unshift(r)
 			}
 		})
 
