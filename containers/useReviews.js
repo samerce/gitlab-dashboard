@@ -88,6 +88,9 @@ var ReviewsQuery = gql`
 			updatedAt
 			createdAt
 			approved
+			headPipeline {
+				status
+			}
 			author {
 				avatarUrl
 				name

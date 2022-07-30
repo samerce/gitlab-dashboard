@@ -11,7 +11,7 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main className='flex grow flex-col items-center w-full h-screen px-12 text-white max-w-[1920px]'>
+      <main className='flex grow flex-col items-center w-full h-screen px-3 text-white max-w-[1920px]'>
         <Header />
         
         <div className='flex w-full items-start justify-center h-full relative overflow-hidden'>
