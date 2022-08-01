@@ -69,7 +69,7 @@ function ReviewItem(p) {
 				</div>
 
 				<div className={`flex-col items-center justify-center ${pipeline.className} ${cn.status}`}>
-					<Icon glyph={pipeline.icon} size={20} />
+					<Icon glyph={pipeline.icon} size={20} className={pipeline.iconClassName} />
 					<div className='text-xs mt-1'>
 						pipeline
 					</div>
@@ -82,7 +82,7 @@ function ReviewItem(p) {
 					</div>
 				</div>
 
-				<div className='text-sm text-main-lt flex-col items-center justify-center basis-[108px]'>
+				<div className='text-sm text-main-lt flex-col items-center justify-center basis-[108px] mx-2'>
 					<i className='text-xs'>updated</i>
 					{moment(p.updatedAt).fromNow()}
 				</div>
@@ -113,7 +113,7 @@ function pipelineConfig(status) {
 		default:
 			return {
 				icon: 'freeze',
-				className: 'animate-spin',
+				iconClassName: 'animate-spin',
 			}
 	}
 }
