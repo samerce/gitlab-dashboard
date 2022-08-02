@@ -16,7 +16,7 @@ export default function Home() {
         
         <div className='flex w-full items-start justify-center h-full relative overflow-hidden'>
           <Requests />
-          <div className='shrink-0 grow-0 basis-[1px] w-[1px] h-full bg-tpWhite ml-2'>&nbsp;</div>
+          <div className='shrink-0 grow-0 basis-[1px] w-[1px] h-full bg-tpWhite mx-2'>&nbsp;</div>
           <Threads />
         </div>
 

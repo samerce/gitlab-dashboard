@@ -14,7 +14,7 @@ export default function Requests() {
 			<SectionHeader>Merge Requests</SectionHeader>
 
 			<div className={cn.scrollRoot}>
-				<ReviewGroup title='Stale Requests' reviews={staleReviews} />
+				<ReviewGroup title='Stale Requests' reviews={staleReviews} stale />
 				<ReviewGroup title='Fresh Requests' reviews={freshReviews} />
 				<ReviewGroup title='Approved Requests' reviews={approvedReviews} />
 			</div>
@@ -22,13 +22,13 @@ export default function Requests() {
 	)
 }
 
-function ReviewGroup({ title, reviews }) {
+function ReviewGroup({ title, reviews, ...props }) {
 	if (!reviews || reviews.length === 0) return null;
 
 	return (
 		<>
 			<GroupHeader>{title}</GroupHeader>
-			{reviews?.map(mr => <ReviewItem {...mr} key={mr.id} />)}
+			{reviews?.map(mr => <ReviewItem {...mr} {...props} key={mr.id} />)}
 		</>
 	)
 }
@@ -52,8 +52,10 @@ function ReviewItem(p) {
 	const pipeline = pipelineConfig(p.headPipeline.status)
 
 	return (
-		<div className={cn.reviewItem}>
-			<a className='flex w-full h-full p-2 items-stretch relative' href={p.webUrl} target='_blank'>
+		<div className={cn.reviewItem + (p.stale ? ' border-main' : '')}>
+			<a className='flex w-full h-full p-2 items-center relative' href={p.webUrl} target='_blank'>
+				{p.stale && <Icon glyph='clock' size={20} className={cn.staleIcon} />}
+
 				<Avatar author={p.author} className='w-12 h-12 mr-2' />
 
 				<div className='flex-col justify-center grow shrink text-white'>
@@ -63,7 +65,7 @@ function ReviewItem(p) {
 					</div>
 				</div>
 
-				<div className={'flex text-main-lt text-sm items-center ' + cn.status}>
+				<div className={'flex text-main-lt text-sm items-center self-stretch ' + cn.status}>
 	        <Icon glyph='message-simple' size={20} className='mr-1' />
 					{notes.length}
 				</div>
@@ -82,7 +84,7 @@ function ReviewItem(p) {
 					</div>
 				</div>
 
-				<div className='text-sm text-main-lt flex-col items-center justify-center basis-[108px] mx-2'>
+				<div className='text-sm text-main-lt flex-col items-center justify-center text-center basis-[108px] mx-2'>
 					<i className='text-xs'>updated</i>
 					{moment(p.updatedAt).fromNow()}
 				</div>
@@ -113,6 +115,7 @@ function pipelineConfig(status) {
 		default:
 			return {
 				icon: 'freeze',
+				className: 'text-main-lt',
 				iconClassName: 'animate-spin',
 			}
 	}
@@ -135,5 +138,7 @@ var cn = {
 
 	noteListRoot: 'flex-col w-full max-h-[324px] overflow-y-scroll border-tpWhite border-t py-2',
 
-	status: 'px-3 border-r border-tpWhite'
+	status: 'px-3 border-r border-tpWhite',
+
+	staleIcon: 'absolute left-2 bottom-2 rounded-full bg-main-dk text-main'
 }
