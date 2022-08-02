@@ -70,14 +70,14 @@ function ReviewItem(p) {
 					{notes.length}
 				</div>
 
-				<div className={`flex-col items-center justify-center ${pipeline.className} ${cn.status}`}>
+				<div className={`flex-col items-center justify-center self-stretch ${pipeline.className} ${cn.status}`}>
 					<Icon glyph={pipeline.icon} size={20} className={pipeline.iconClassName} />
 					<div className='text-xs mt-1'>
 						pipeline
 					</div>
 				</div>
 
-				<div className={`flex-col items-center justify-center ${cn.status} ${p.approved ? 'text-green' : 'text-main-lt'}`}>
+				<div className={`flex-col items-center justify-center self-stretch ${cn.status} ${p.approved ? 'text-green' : 'text-main-lt'}`}>
 					<Icon glyph={p.approved ? 'checkmark' : 'clock'} size={20} />
 					<div className='text-xs mt-1'>
 						approval
