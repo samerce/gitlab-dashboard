@@ -130,11 +130,11 @@ function VSeparator() {
 }
 
 var cn = {
-	root: 'flex flex-col items-center justify-start grow max-h-full min-w-[972px]',
+	root: 'flex flex-col items-center justify-start h-full min-w-[972px]',
 
-	scrollRoot: 'flex-col flex-wrap w-full items-start justify-start h-full overflow-y-scroll overflow-x-hidden pr-[9px] pt-3',
+	scrollRoot: 'flex-col w-full items-start justify-start basis-full overflow-y-scroll overflow-x-hidden pr-3 pt-3 pb-4',
 	
-	reviewItem: 'flex flex-col items-center w-full overflow-hidden bg-main-dk mx-1.5 mb-3 rounded-xl border-sexy relative',
+	reviewItem: 'flex flex-col items-center w-full bg-main-dk mb-3 rounded-xl border-sexy relative',
 
 	noteListRoot: 'flex-col w-full max-h-[324px] overflow-y-scroll border-tpWhite border-t py-2',
 

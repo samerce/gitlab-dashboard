@@ -31,7 +31,6 @@ export default function Threads() {
 	return (
 		<div className={cn.root}>
 			<SectionHeader>Threads</SectionHeader>
-			<div className='grow-0 shrink-0 basis-3' />
 			<div className={cn.scrollRoot}>
 				{threads.map(t => <ThreadItem {...t} key={t.url} />)}
 			</div>
@@ -64,12 +63,11 @@ function ThreadItem(p) {
 }
 
 var cn = {
-	root: 'flex flex-col items-center justify-start grow min-w-[216px] max-w-[648px] h-full overflow-scroll',
+	root: 'flex flex-col items-center justify-start min-w-[216px] max-w-[648px] h-full',
 
-	scrollRoot: 'flex-col w-full items-start justify-start h-full overflow-y-scroll overflow-x-hidden pr-[9px]',
+	scrollRoot: 'flex-col w-full items-start justify-start basis-full overflow-y-scroll overflow-x-hidden pr-3 pt-3',
 
-
-	threadRoot: 'flex-col items-center text-white w-full mb-4 relative overflow-hidden pb-4',
+	threadRoot: 'flex-col items-center text-white w-full mb-5 relative',
 
 	threadTitle: 'w-full p-2 truncate text-xs text-center text-main-lt mb-3 uppercase border-sexy rounded-lg bg-main-dk'
 }

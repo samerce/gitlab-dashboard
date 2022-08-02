@@ -10,7 +10,8 @@ module.exports = {
       colors: {
         main: '#DB4041',
         'main-lt': '#ffcbcd',
-        'main-md': '#551d1d',
+        'main-md-lt': '#b13136',
+        'main-md': '#531a1c',
         'main-dk': '#260d10',
         black: '#0a0404',
         tpBlack: '#1a011421',

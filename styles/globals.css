@@ -69,4 +69,14 @@
 		word-break: break-word;
 		word-wrap: break-word;
 	}
+
+	code {
+		background: rgba(255,255,255,.27);
+		padding: 2px 4px;
+		border-radius: 4px;
+	}
+
+	p:not(:last-child) {
+		margin: 0 0 theme('spacing.3');
+	}
 }
