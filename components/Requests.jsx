@@ -130,7 +130,7 @@ function VSeparator() {
 }
 
 var cn = {
-	root: 'flex flex-col items-center justify-start h-full min-w-[972px]',
+	root: 'flex flex-col items-center justify-start grow h-full min-w-[972px]',
 
 	scrollRoot: 'flex-col w-full items-start justify-start basis-full overflow-y-scroll overflow-x-hidden pr-3 pt-3 pb-4',
 	
