@@ -7,5 +7,5 @@ GITLAB_ACCESS_TOKEN=<your gitlab personal access token>
 Then:
 ```bash
 yarn
-yarn start
+yarn dev
 ```

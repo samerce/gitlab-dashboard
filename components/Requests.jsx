@@ -56,7 +56,7 @@ function ReviewItem(p) {
 			<a className='flex w-full h-full p-2 items-center relative' href={p.webUrl} target='_blank'>
 				{p.stale && <Icon glyph='clock' size={20} className={cn.staleIcon} />}
 
-				<Avatar author={p.author} className='w-12 h-12 mr-2' />
+				<Avatar author={p.author} className='w-12 h-12 mr-3 ml-1' />
 
 				<div className='flex-col justify-center grow shrink text-white'>
 					<div className='truncate text-sm leading-loose'>{p.title}</div>
