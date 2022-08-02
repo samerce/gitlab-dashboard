@@ -4,7 +4,7 @@ import Avatar from "./Avatar"
 export default function MessageBubble(p) {
 	const textDirection = p.left ? '' : ' '
 	const bodyCN = 'text-[12px] rounded-xl p-2 border-sexy break-word ' + textDirection +
-		(p.left? 'bg-main-md mr-auto' : 'bg-main-md-lt ml-auto')
+		(p.left? 'bg-main-md-lt mr-auto' : 'bg-main-md ml-auto')
 	const avatarCN = 'w-[36px] h-[36px] ' + 
 		(p.left? 'order-first mr-1' : 'order-last ml-1')
 
