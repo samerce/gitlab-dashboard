@@ -69,6 +69,6 @@ var cn = {
 
 	threadRoot: 'flex-col items-center text-white w-full mb-5 relative',
 
-	threadTitle: 'w-full p-2 truncate text-xs text-center text-main-lt mb-3 uppercase border-sexy rounded-lg bg-main-dk'
+	threadTitle: 'w-full p-2 truncate text-xs text-center text-main-lt mb-3 uppercase border-sexy rounded-lg bg-main-dk sticky top-0 z-10'
 }
 	

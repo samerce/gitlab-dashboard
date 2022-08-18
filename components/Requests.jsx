@@ -49,7 +49,7 @@ function ReviewItem(p) {
 	// 	}
 	// }, [notes, scrollRootRef])
 
-	const pipeline = pipelineConfig(p.headPipeline.status)
+	const pipeline = pipelineConfig(p.headPipeline?.status)
 
 	return (
 		<div className={cn.reviewItem + (p.stale ? ' border-main' : '')}>
@@ -119,6 +119,7 @@ function pipelineConfig(status) {
 				iconClassName: 'animate-spin',
 			}
 	}
+	return {}
 }
 
 function GroupHeader({ children }) {
